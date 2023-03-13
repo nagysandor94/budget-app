@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://mouse.db.elephantsql.com:5432/ebypfghn
     username: ebypfghn
-    password: jTBLpBSh8vNrnLYnE7gkCIiLBcHE42QK
+    password: 
   sql:
     init:
       platform: postgresql
