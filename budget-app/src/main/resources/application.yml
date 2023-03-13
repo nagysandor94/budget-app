@@ -1,0 +1,26 @@
+## default connection pool
+debug: true
+spring:
+  datasource:
+    url: jdbc:postgresql://mouse.db.elephantsql.com:5432/ebypfghn
+    username: ebypfghn
+    password: jTBLpBSh8vNrnLYnE7gkCIiLBcHE42QK
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
