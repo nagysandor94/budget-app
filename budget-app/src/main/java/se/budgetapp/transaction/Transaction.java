@@ -1,4 +1,4 @@
-package transaction;
+package se.budgetapp.transaction;
 
 
 import jakarta.persistence.Entity;
