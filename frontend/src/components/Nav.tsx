@@ -6,8 +6,8 @@ import '../css/Nav.css';
 const Nav=() =>{
     return (
         <nav className="navbar">
-            <Link className="a" to="/">Home</Link>
-            <Link className="a" to="/addnewtransaction">Add new transaction</Link>
+            <Link  to="/">Home</Link>
+            <Link  to="/addnewtransaction">Add new transaction</Link>
         </nav>
     );
   }
