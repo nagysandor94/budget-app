@@ -25,7 +25,12 @@ public class TransactionService {
 
     Transaction transactionFromDTO(TransactionDTO dto) {
         double amount = dto.amount();
-        Category category = categoryRepository.getCategoryByCategoryName(dto.category());
+        String categoryName = dto.category();
+        if(dto.category().isEmpty()){
+            categoryName = "No category";
+        }
+        Category category = categoryRepository.getCategoryByCategoryName(categoryName);
+
         if (dto.typeIncEx().equals("Expense")){
             amount = (-1)*dto.amount();
         }

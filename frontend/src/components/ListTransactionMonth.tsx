@@ -48,45 +48,48 @@ const ListTransactionMonth = ({ month }: Props) => {
 
 
     return (
-        <div className="container-List">
-            <h2 className="text-center"> List Transactions </h2>
-            <Link to="/addnewtransaction" className="btn btn-primary mb-2" > Add Transaction </Link>
-            <table className="table table-bordered table-striped">
-                <thead>
-                    <th> Transaction Id </th>
-                    <th> Type </th>
-                    <th> Category </th>
-                    <th> Month </th>
-                    <th> Description </th>
-                    <th> Amount </th>
-                    <th> Edit / Delete </th>
-                </thead>
-                <tbody>
-                    {
-                        transactions.map(
-                            transaction =>
-                                <tr key={transaction.id}>
-                                    <td> {transaction.id} </td>
-                                    <td> {transaction.type} </td>
-                                    <td> {transaction.category} </td>
-                                    <td>{transaction.month}</td>
-                                    <td>{transaction.description}</td>
-                                    <td>{transaction.amount}</td>
-                                    <td>
-                                        <Link className="btn-Edit" to={`/edit-transaction/${transaction.id}`} >Update</Link>
-                                        <button className="btn-Delete" onClick={() => deleteTransaction(transaction.id)}
-                                            style={{ marginLeft: "10px" }}> Delete</button>
-                                    </td>
-                                </tr>
-                        )
-                    }
-                </tbody>
-            </table>
-            <div>
-                <h1>Money left</h1>
-                <p>{sumArray(transactions)}</p>
+        <>
+            <div className="container-List">
+                <h1 className="text-center"> List Transactions </h1>
+                {/* <Link to="/addnewtransaction" className="btn btn-primary mb-2" > Add Transaction </Link> */}
+                <table className="table table-bordered table-striped">
+                    <thead>
+                        <th> Transaction Id </th>
+                        <th> Type </th>
+                        <th> Category </th>
+                        <th> Month </th>
+                        <th> Description </th>
+                        <th> Amount </th>
+                        <th> Edit / Delete </th>
+                    </thead>
+                    <tbody>
+                        {
+                            transactions.map(
+                                transaction =>
+                                    <tr key={transaction.id}>
+                                        <td> {transaction.id} </td>
+                                        <td> {transaction.type} </td>
+                                        <td> {transaction.category} </td>
+                                        <td>{transaction.month}</td>
+                                        <td>{transaction.description}</td>
+                                        <td>{transaction.amount}</td>
+                                        <td>
+                                            <Link className="button-Edit" to={`/edit-transaction/${transaction.id}`} >Update</Link>
+                                            <button className="button-Delete" onClick={() => deleteTransaction(transaction.id)}
+                                                style={{ marginLeft: "10px" }}> Delete</button>
+                                        </td>
+                                    </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+
             </div>
-        </div>
+            <div className="summury">
+                <h2>Money left</h2>
+                <h2>{sumArray(transactions)}</h2>
+            </div>
+        </>
     )
 }
 
