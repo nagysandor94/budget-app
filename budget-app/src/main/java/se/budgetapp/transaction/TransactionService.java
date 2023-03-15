@@ -67,7 +67,7 @@ public class TransactionService {
     public double setAmount(TransactionDTO dto) {
         double amount = Math.abs(dto.amount());
         if (dto.typeIncEx().equals("Expense")){
-            amount = (-1)*dto.amount();
+            return amount = (-1)*amount;
         }
         return amount;
     }
