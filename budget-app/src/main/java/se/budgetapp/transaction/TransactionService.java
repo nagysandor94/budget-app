@@ -13,7 +13,7 @@ import java.util.List;
 public class TransactionService {
 
     @Autowired
-    JPATransactionRepository repo;
+    TransactionRepository repo;
 
     @Autowired
     ICategoryRepository categoryRepository;
@@ -24,16 +24,13 @@ public class TransactionService {
     }
 
     Transaction transactionFromDTO(TransactionDTO dto) {
-        double amount = dto.amount();
+        double amount = setAmount(dto);
         String categoryName = dto.category();
         if(dto.category().isEmpty()){
             categoryName = "No category";
         }
         Category category = categoryRepository.getCategoryByCategoryName(categoryName);
 
-        if (dto.typeIncEx().equals("Expense")){
-            amount = (-1)*dto.amount();
-        }
         return new Transaction(dto.typeIncEx(), category, dto.month(),dto.description(), amount);
     }
 
@@ -46,9 +43,6 @@ public class TransactionService {
 
     public ResponseTransactionDTO transactionToDto (Transaction transaction) {
         double amount = transaction.getAmount();
-//        if (transaction.getType().equals("Expense")){
-//            amount = (-1)* transaction.getAmount();
-//        }
         return new ResponseTransactionDTO(transaction.getId(), transaction.getType(), transaction.getCategory().getCategoryName(), transaction.getMonth(), transaction.getDescription(), amount);
     }
 
@@ -59,13 +53,23 @@ public class TransactionService {
 
     public Transaction updateTransaction(Transaction transaction, TransactionDTO dto) {
         Category category = categoryRepository.getCategoryByCategoryName(dto.category());
+        double amount = setAmount(dto);
         transaction.setCategory(category);
         transaction.setType(dto.typeIncEx());
-        transaction.setAmount(dto.amount());
+        transaction.setAmount(amount);
+        transaction.setMonth(dto.month());
         transaction.setDescription(dto.description());
 
         return repo.save(transaction);
 
+    }
+
+    public double setAmount(TransactionDTO dto) {
+        double amount = Math.abs(dto.amount());
+        if (dto.typeIncEx().equals("Expense")){
+            amount = (-1)*dto.amount();
+        }
+        return amount;
     }
 
     public boolean delete(Long id) {

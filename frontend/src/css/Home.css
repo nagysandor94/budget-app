@@ -1,49 +1,11 @@
-/* .btn-group {
-    background-color: #04AA6D; 
-    border: 1px solid green; 
-    color: white; 
-    padding: 10px 24px; 
-    cursor: pointer; 
-
-  }
-
-.btn-group {
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-}
-
-.btn-group button:not(:last-child) {
-  border-right: none;
-}
-
-
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-
-.btn-group button:hover {
-  background-color: #3e8e41;
-}
-
-.button {
-  width: 100%;
-  text-align: center;
-}
-
-h1{
-  margin-top: 2em;
-  text-align: center;
-} */
 
 .page-conent{
   display: flex;
-  flex-direction: row;
-  gap:2em;
+  flex-direction: column;
+  gap:1em;
   justify-content: space-between;
   justify-content: center;
+  margin-left: 2em;
 
 
 }
@@ -65,6 +27,22 @@ h1{
   border: 1px solid green; 
   color: white; 
   text-decoration: none;
-
+  border: 1px solid #cccccc;
+  border-radius: 4px;
 }
 
+.button-month:hover {
+  background-color: #3e8e41;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+  .page-conent{
+    flex-direction: row;
+    margin-left: 0;
+  }
+  
+
+
+}

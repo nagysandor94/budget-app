@@ -9,17 +9,16 @@ function AddEditTransaction() {
 
     const [categories, setCategories] = useState<ICategoryName[]>();
     const [transaction, setTransaction] = useState<ITransaction>();
-    const [category, setCategory] = useState<string>('Salary');
+    const [category, setCategory] = useState<string>('No category');
     const [description, setDescription] = useState<string>('');
     const [month, setMonth] = useState<string>('january');
     const [typeIncEx, settypeIncEx] = useState<string>('Expense');
     const [amount, setAmount] = useState<number>(0);
     const navigate = useNavigate();
-
     const { id } = useParams<string>();
 
 
-    const createTransaction = (transaction: any) => {
+    const createTransaction = (transaction: ITransaction) => {
         return axios.post('http://localhost:8080/api/transactions', transaction)
             .then((response) => {
                 console.log(response)
@@ -30,9 +29,10 @@ function AddEditTransaction() {
             });
     };
 
-    const updateTransaction = (transactionId: string, transaction: any) => {
+    const updateTransaction = (transactionId: string, transaction: ITransaction) => {
         return axios.put('http://localhost:8080/api/transactions/' + transactionId, transaction).then((response) => {
             console.log(response)
+            navigate("/month/" + month);
 
         }).catch(error => {
             console.log(error)
@@ -78,11 +78,6 @@ function AddEditTransaction() {
             createTransaction(transaction);
         }
     }
-
-    useEffect(() => {
-
-    })
-
 
     return (
         <div>

@@ -52,15 +52,18 @@ const ListTransactionMonth = ({ month }: Props) => {
             <div className="container-List">
                 <h1 className="text-center"> List Transactions </h1>
                 {/* <Link to="/addnewtransaction" className="btn btn-primary mb-2" > Add Transaction </Link> */}
-                <table className="table table-bordered table-striped">
-                    <thead>
-                        <th> Transaction Id </th>
-                        <th> Type </th>
-                        <th> Category </th>
-                        <th> Month </th>
-                        <th> Description </th>
-                        <th> Amount </th>
-                        <th> Edit / Delete </th>
+                <div className="table-container">
+                <table >
+                    <thead className="table-Header">
+                        <tr>
+                            <th> Id </th>
+                            <th> Type </th>
+                            <th> Category </th>
+                            <th> Month </th>
+                            <th> Description </th>
+                            <th> Amount </th>
+                            <th> Edit / Delete </th>
+                        </tr>
                     </thead>
                     <tbody>
                         {
@@ -73,7 +76,7 @@ const ListTransactionMonth = ({ month }: Props) => {
                                         <td>{transaction.month}</td>
                                         <td>{transaction.description}</td>
                                         <td>{transaction.amount}</td>
-                                        <td>
+                                        <td className="edit-delete-container">
                                             <Link className="button-Edit" to={`/edit-transaction/${transaction.id}`} >Update</Link>
                                             <button className="button-Delete" onClick={() => deleteTransaction(transaction.id)}
                                                 style={{ marginLeft: "10px" }}> Delete</button>
@@ -82,7 +85,9 @@ const ListTransactionMonth = ({ month }: Props) => {
                             )
                         }
                     </tbody>
+
                 </table>
+                </div>
 
             </div>
             <div className="summury">
