@@ -1,0 +1,48 @@
+
+.page-conent{
+  display: flex;
+  flex-direction: column;
+  gap:1em;
+  justify-content: space-between;
+  justify-content: center;
+  margin-left: 2em;
+
+
+}
+
+.btn-group{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+}
+
+.button-month{
+  background-color: aqua;
+  text-align: center;
+  width: 10em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-color: #04AA6D; 
+  border: 1px solid green; 
+  color: white; 
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.button-month:hover {
+  background-color: #3e8e41;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+  .page-conent{
+    flex-direction: row;
+    margin-left: 0;
+  }
+  
+
+
+}
