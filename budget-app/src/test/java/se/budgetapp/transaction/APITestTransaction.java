@@ -16,33 +16,43 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class APITestTransaction extends BudgetAppApplicationTests {
 
-    private static Transaction transaction;
+    private static ResponseTransactionDTO transactionDTO;
+
+    @Autowired
+    TransactionService service;
 
     @BeforeAll
     static void setUp(@Autowired RestTemplate template, @Value("${server.port}") int port) {
         String baseURL = "http://localhost:%s/api/transactions".formatted(port);
-        TransactionDTO createTransaction = new TransactionDTO("Income", "Salary", "january", "salary", 4500);
-        ResponseEntity <Transaction> response = template
-                .postForEntity(baseURL, createTransaction, Transaction.class);
+        TransactionDTO createTransaction = new TransactionDTO("Expense", "Clothing", "january", "", 100);
+        ResponseEntity <ResponseTransactionDTO> response = template
+                .postForEntity(baseURL, createTransaction, ResponseTransactionDTO.class);
         assertThat(response.getStatusCode().value()).isEqualTo(201);
-        transaction = response.getBody();
+        transactionDTO = response.getBody();
     }
 
-    @AfterAll
-    static void tearDown (@Autowired TransactionRepository repository) {
-    repository.delete(transaction);
-    }
+//    @AfterAll
+//    static void tearDown (@Autowired TransactionRepository repository) {
+//    repository.delete(service.transactionFromDTO(transactionDTO));
+//    }
 
     @Test
-    @Order(1)
+//    @Order(1)
     void shouldListTransactions() {
     ResponseEntity<List> response = restTemplate.getForEntity("http://localhost:%s/api/transactions/month/january".formatted(port), List.class);
     List transactions = response.getBody();
-
     assertThat(response.getStatusCode().value()).isEqualTo(200);
     assertThat(transactions).hasSize(1);
-
     }
+
+//    @Test
+//    void shouldListThreeCategories() {
+//        ResponseEntity<List> response = restTemplate.getForEntity("http://localhost:%s/api/transactions/month/january".formatted(port), List.class);
+//        List transactions = response.getBody();
+//
+//        assertThat(response.getStatusCode().value()).isEqualTo(200);
+//        assertThat(transactions).hasSize(3);
+//    }
 
 
 }

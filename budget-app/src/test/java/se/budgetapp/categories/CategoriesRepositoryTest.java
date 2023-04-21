@@ -23,9 +23,9 @@ public class CategoriesRepositoryTest extends BudgetAppApplicationTests {
     }
 
     @Test
-    void shouldGetCategoryByNameSalary(){
-        Category category = repo.getCategoryByName("Salary");
-        assertThat(category.categoryName).isEqualTo("Salary");
+    void shouldGetCategoryByNameClothing(){
+        Category category = repo.getCategoryByName("Clothing");
+        assertThat(category.categoryName).isEqualTo("Clothing");
     }
 
 }

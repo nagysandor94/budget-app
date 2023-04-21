@@ -29,12 +29,13 @@ public class TransactionController {
         return new ResponseEntity<>(responseTransactionDTOS, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @PostMapping
-    public ResponseEntity<Transaction> createNewTransaction (@RequestBody TransactionDTO dto){
+    public ResponseEntity<ResponseTransactionDTO> createNewTransaction (@RequestBody TransactionDTO dto){
         Transaction transaction = service.transactionFromDTO(dto);
+        transaction.setCategory(service.findCategory(dto));
         Transaction savedTransaction = service.saveTransaction(transaction);
-        return ResponseEntity.ok(savedTransaction);
+        return ResponseEntity.ok().body(service.transactionToDto(savedTransaction));
     }
 
 

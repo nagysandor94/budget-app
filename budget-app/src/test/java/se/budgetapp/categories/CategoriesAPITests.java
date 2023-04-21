@@ -16,10 +16,10 @@ public class CategoriesAPITests extends BudgetAppApplicationTests {
     @Test
     void shouldListThreeCategories() {
         ResponseEntity<List> response = restTemplate.getForEntity("http://localhost:%s/api/categories".formatted(port), List.class);
-        List transactions = response.getBody();
+        List categories = response.getBody();
 
         assertThat(response.getStatusCode().value()).isEqualTo(200);
-        assertThat(transactions).hasSize(3);
+        assertThat(categories).hasSize(3);
     }
 
 }

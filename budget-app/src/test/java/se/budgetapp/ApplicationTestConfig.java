@@ -11,8 +11,7 @@ public class ApplicationTestConfig {
     @Bean
     public RestTemplate template(){
         RestTemplate restTemplate = new RestTemplate();
-        //restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         return restTemplate;
     }
-
 }

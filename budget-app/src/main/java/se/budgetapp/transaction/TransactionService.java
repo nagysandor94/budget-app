@@ -25,13 +25,22 @@ public class TransactionService {
 
     Transaction transactionFromDTO(TransactionDTO dto) {
         double amount = setAmount(dto);
+//        String categoryName = dto.category();
+//        if(dto.category().isEmpty()){
+//            categoryName = "No category";
+//        }
+//        Category category = categoryRepository.getCategoryByCategoryName(categoryName);
+
+        return new Transaction(dto.typeIncEx(), dto.month(),dto.description(), amount);
+    }
+
+    Category findCategory (TransactionDTO dto) {
         String categoryName = dto.category();
         if(dto.category().isEmpty()){
             categoryName = "No category";
         }
         Category category = categoryRepository.getCategoryByCategoryName(categoryName);
-
-        return new Transaction(dto.typeIncEx(), category, dto.month(),dto.description(), amount);
+        return category;
     }
 
     public List<Transaction> getAlltransactionByMonth(String month) {
