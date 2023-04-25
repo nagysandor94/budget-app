@@ -5,7 +5,7 @@ Used technology: Java, PostgreSQL (ElephantSQL), Spring Boot framework, React, T
 
 ## How to Use the Project
 To use the project you need to have an ElephantSQL database.
-You can find a [VIDEO](https://www.youtube.com/watch?v=lrij8nYfUFQ) of the project. 
+You can find a [VIDEO](https://www.youtube.com/watch?v=lrij8nYfUFQ) of how you can use the project. 
 
 ## How to Install and Run the Project
 The project is not deployed, so you can run it on localhost. 
