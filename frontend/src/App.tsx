@@ -11,7 +11,7 @@ import ListTransactionMonth from './components/ListTransactionMonth';
 
 function App() {
   return (
-    <div className="App">
+    <div className = "App">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />}> </Route>

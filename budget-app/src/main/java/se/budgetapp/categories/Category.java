@@ -1,7 +1,9 @@
 package se.budgetapp.categories;
 
 
-import jakarta.persistence.*;
+
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "categories")

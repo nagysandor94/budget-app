@@ -1,0 +1,26 @@
+## default connection pool
+debug: true
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PW}
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR

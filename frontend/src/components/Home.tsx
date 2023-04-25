@@ -5,7 +5,7 @@ import '../css/Home.css';
 function Home() {
     return (
         <>
-            <h1>Welcom to your Budget App!</h1>
+            <h1>Welcome to your Budget App!</h1>
             <div className="page-conent">
                 <div className="btn-group">
                     <Link className="button-month" to="/month/january">JANUARY</Link>

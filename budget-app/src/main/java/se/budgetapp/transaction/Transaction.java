@@ -1,7 +1,9 @@
 package se.budgetapp.transaction;
-import jakarta.persistence.*;
+
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import se.budgetapp.categories.Category;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "transactions")
@@ -84,6 +86,13 @@ public class Transaction {
     public Transaction(String type, Category category, String month, String description, double amount) {
         this.type = type;
         this.category = category;
+        this.month = month;
+        this.description = description;
+        this.amount = amount;
+    }
+
+    public Transaction(String type, String month, String description, double amount) {
+        this.type = type;
         this.month = month;
         this.description = description;
         this.amount = amount;
