@@ -1,31 +1,21 @@
-
-.page-conent{
-  display: flex;
-  flex-direction: column;
-  gap:1em;
-  justify-content: space-between;
-  justify-content: center;
-  margin-left: 2em;
-
-
-}
-
-.btn-group{
+.page-conent {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  justify-content: center;
+  align-items: center;
+
+
 }
 
-.button-month{
+.button-month {
   background-color: aqua;
   text-align: center;
   width: 10em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  background-color: #04AA6D; 
-  border: 1px solid green; 
-  color: white; 
+  background-color: #04AA6D;
+  border: 1px solid green;
+  color: white;
   text-decoration: none;
   border: 1px solid #cccccc;
   border-radius: 4px;
@@ -38,11 +28,19 @@
 
 @media only screen and (min-width: 768px) {
 
-  .page-conent{
-    flex-direction: row;
-    margin-left: 0;
+  .page-conent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+    margin-left: 5em;
+    margin-right: 5em;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
   }
-  
+
 
 
 }
