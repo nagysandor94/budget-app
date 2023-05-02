@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ICategoryName, ITransaction, IRespTransaction } from '../Interfaces'
+import { ICategoryName, ITransaction, IRespTransaction, months } from '../Interfaces'
 import { Link, useParams } from 'react-router-dom';
 import axios from "axios";
 import '../css/AddEditTransaction.css';
@@ -70,7 +70,7 @@ function AddEditTransaction() {
 
         if (id) {
             updateTransaction(id, transaction).then((response) => {
-                // history.push('/employees')
+
             }).catch(error => {
                 console.log(error)
             })
@@ -80,6 +80,8 @@ function AddEditTransaction() {
     }
 
     return (
+
+
         <div>
             <h1>Transaction</h1>
             <div className="container">
@@ -100,24 +102,15 @@ function AddEditTransaction() {
 
                     <label >Month</label>
                     <select value={month} onChange={(e) => setMonth(e.target.value)}>
-                        <option value="january">january</option>
-                        <option value="february">february</option>
-                        <option value="march">march</option>
 
-                        <option value="april">april</option>
-                        <option value="may">may</option>
-                        <option value="june">june</option>
-
-                        <option value="july">july</option>
-                        <option value="august">august</option>
-                        <option value="september">september</option>
-
-                        <option value="october">october</option>
-                        <option value="november">november</option>
-                        <option value="december">december</option>
+                        {months.map((month) => {
+                            return <option key={month} value={month}>{month}</option>;
+                        })};
                     </select>
+
                     <label >Description</label>
                     <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Add description.." ></textarea>
+
                     <label >Amount</label>
                     <input value={amount} onChange={(e) => setAmount(e.target.valueAsNumber)} type="number" step="0.01" id="fname" name="firstname" placeholder="Amount..." />
                     <button className="add-button" onClick={event => addTransaction(event)}>Submit</button>
