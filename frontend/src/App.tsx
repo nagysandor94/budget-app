@@ -7,10 +7,10 @@ import { Routes, Route } from "react-router-dom";
 import Nav from './components/Nav';
 import AddEditTransaction from './components/AddEditTransaction';
 import ListTransactionMonth from './components/ListTransactionMonth';
+import { months } from './Interfaces'
 
 
 function App() {
-  const months: string[] = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
   return (
     <div className="App">
       <Nav />

@@ -17,7 +17,6 @@ function AddEditTransaction() {
     const navigate = useNavigate();
     const { id } = useParams<string>();
 
-
     const createTransaction = (transaction: ITransaction) => {
         return axios.post('http://localhost:8080/api/transactions', transaction)
             .then((response) => {
@@ -42,8 +41,6 @@ function AddEditTransaction() {
     const getTransactionById = (transactionId: string) => {
         return axios.get('http://localhost:8080/api/transactions/' + transactionId);
     };
-
-
 
     useEffect(() => {
         const url = 'http://localhost:8080/api/categories';
@@ -116,10 +113,7 @@ function AddEditTransaction() {
                     <button className="add-button" onClick={event => addTransaction(event)}>Submit</button>
                 </form>
             </div>
-
-
         </div>
-
     );
 }
 
